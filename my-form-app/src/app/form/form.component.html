@@ -1,0 +1,36 @@
+<p>form works!</p>
+
+<form [formGroup]='formFieldsGroup' (ngSubmit)="onFormSubmit()">
+  <label>Store Name:</label>
+  <select formControlName="storeName" (change)="onStoreNameChange($event)"> 
+    <option *ngFor="let store of storeOptions" [value]="store.id">{{store.name}}</option>
+  </select>
+  <label>Store Address:</label>
+  <input formControlName="storeAddress" [readonly]="true">
+  <label>Store Phone Number:</label>
+  <input formControlName="storePhoneNumber" [readonly]="true">
+  <label>Date:</label>
+  <input formControlName="date" [readonly]="true">
+  <label>Served By:</label>
+  <input formControlName="servedBy">
+  <label>Email:</label>
+  <input formControlName="email">
+  <label>BT Broadbrand:</label>
+  <input formControlName="btBroadband">
+  <label>BT TV package:</label>
+  <input formControlName="btTvPackage">
+  <label>Monthly charge:</label>
+  <input formControlName="monthlyCharge" type="number">
+  <label>Upfront fee:</label>
+  <input formControlName="upfrontFee" type="number">
+  <label>Installments of payment:</label>
+  <select formControlName="installmentsOfPayment">
+    <option *ngFor="let i of [1, 2, 3, 4, 5]" [value]="i">{{i}}</option>
+  </select>
+  <label>Other handy information:</label>
+  <textarea formControlName="otherHandlyInformation" maxlength="50"></textarea>
+  <label>Sport package:</label>
+  <input formControlName="sportPackage" type="date">
+  <button type="reset">Reset</button>
+  <button type="submit" [disabled]="!formFieldsGroup.valid">Submit</button>
+</form>
