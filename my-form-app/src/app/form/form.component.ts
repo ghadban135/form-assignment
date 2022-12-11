@@ -51,6 +51,8 @@ export class FormComponent implements OnInit {
   onFormSubmit() {
     this.http.post('http://localhost:8080/form', this.formFieldsGroup.value).subscribe(() => {
     console.error("success");
+    alert('Form submitted successfully!');
+    this.formFieldsGroup.reset();
     },
     error => {
     console.error(error);

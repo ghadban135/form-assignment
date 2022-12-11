@@ -1,36 +1,35 @@
-<p>form works!</p>
-
 <form [formGroup]='formFieldsGroup' (ngSubmit)="onFormSubmit()">
-  <label>Store Name:</label>
-  <select formControlName="storeName" (change)="onStoreNameChange($event)"> 
+  <h1>Store Data</h1>
+  <label for="storeName">Store Name:</label>
+  <select id="storeName" formControlName="storeName" (change)="onStoreNameChange($event)"> 
     <option *ngFor="let store of storeOptions" [value]="store.id">{{store.name}}</option>
   </select>
-  <label>Store Address:</label>
-  <input formControlName="storeAddress" [readonly]="true">
-  <label>Store Phone Number:</label>
-  <input formControlName="storePhoneNumber" [readonly]="true">
-  <label>Date:</label>
-  <input formControlName="date" [readonly]="true">
-  <label>Served By:</label>
-  <input formControlName="servedBy">
-  <label>Email:</label>
-  <input formControlName="email">
-  <label>BT Broadbrand:</label>
-  <input formControlName="btBroadband">
-  <label>BT TV package:</label>
-  <input formControlName="btTvPackage">
-  <label>Monthly charge:</label>
-  <input formControlName="monthlyCharge" type="number">
-  <label>Upfront fee:</label>
-  <input formControlName="upfrontFee" type="number">
-  <label>Installments of payment:</label>
-  <select formControlName="installmentsOfPayment">
+  <label for="storeAddress">Store Address:</label>
+  <input id="storeAddress" formControlName="storeAddress" [readonly]="true">
+  <label for="storePhoneNumber">Store Phone Number:</label>
+  <input id="storePhoneNumber" formControlName="storePhoneNumber" [readonly]="true">
+  <label for="date">Date:</label>
+  <input id="date" formControlName="date" [readonly]="true">
+  <label for="">Served By:</label>
+  <input id="servedBy" formControlName="servedBy">
+  <label for="email">Email:</label>
+  <input id="email" formControlName="email">
+  <label for="btBroadband">BT Broadbrand:</label>
+  <input id="btBroadband" formControlName="btBroadband">
+  <label for="btTvPackage">BT TV package:</label>
+  <input id="btTvPackage" formControlName="btTvPackage">
+  <label for="monthlyCharge">Monthly charge:</label>
+  <input id="monthlyCharge" formControlName="monthlyCharge" type="number">
+  <label for="upfrontFee">Upfront fee:</label>
+  <input id="upfrontFee" formControlName="upfrontFee" type="number">
+  <label for="installmentsOfPayment">Installments of payment:</label>
+  <select id="installmentsOfPayment" formControlName="installmentsOfPayment">
     <option *ngFor="let i of [1, 2, 3, 4, 5]" [value]="i">{{i}}</option>
   </select>
-  <label>Other handy information:</label>
-  <textarea formControlName="otherHandlyInformation" maxlength="50"></textarea>
-  <label>Sport package:</label>
-  <input formControlName="sportPackage" type="date">
+  <label for="otherHandlyInformation">Other handy information:</label>
+  <textarea id="otherHandlyInformation" formControlName="otherHandlyInformation" maxlength="50"></textarea>
+  <label for="sportPackage">Sport package:</label>
+  <input id="sportPackage" formControlName="sportPackage" type="date">
   <button type="reset">Reset</button>
-  <button type="submit" [disabled]="!formFieldsGroup.valid">Submit</button>
+  <button type="submit" [ngClass]="{ 'button-invalid': !formFieldsGroup.valid }" [disabled]="!formFieldsGroup.valid">Submit</button>
 </form>
