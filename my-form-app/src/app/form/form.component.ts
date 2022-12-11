@@ -35,15 +35,12 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<string[]>('http://localhost:8080/stores').subscribe(storeOptions => { 
-      // console.log("test",storeOptions);  
       this.storeOptions = storeOptions;
     });
   }
 
-  onStoreNameChange(event:any){   
-    console.log("jj",event.target.value)      
+  onStoreNameChange(event:any){       
     this.http.get(`http://localhost:8080/store/${event.target.value}`).subscribe((store:any) => {
-      console.log("sfawf",store);
       this.formFieldsGroup.patchValue({
       storeAddress: store.address,
       storePhoneNumber: store.phoneNumber
@@ -52,7 +49,6 @@ export class FormComponent implements OnInit {
   }
 
   onFormSubmit() {
-    // console.log("owfjifh",this.formFieldsGroup.value);
     this.http.post('http://localhost:8080/form', this.formFieldsGroup.value).subscribe(() => {
     console.error("success");
     },
